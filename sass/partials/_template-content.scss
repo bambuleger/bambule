@@ -1,3 +1,61 @@
+/*
+	Main Content
+	------------------------------------------------
+*/
+
+$black: #000;
+$light-grey: #ababab;
+
+$font-thin: 100;
+$font-extra-light: 200;
+$font-light: 300;
+$font-normal: 400;
+$font-medium: 500;
+$font-semi-bold: 600;
+$font-bold: 700;
+$font-extra-bold: 800;
+$font-ultra-bold: 900;
+
 .standard-post-title {
-    font-size: 20px;
+    font-size: 38pt;
+    font-weight: $font-extra-light;
+    margin-bottom: 0px;
+    a {
+        color: $black;
+        font-weight: $font-extra-light;
+        &:hover,
+        &:focus,
+        &:active { 
+            text-decoration: none;
+            //font-weight: $font-light;
+            }        
+        }
+}
+
+.standard-post-date-category {
+    color: $light-grey;
+    font-weight: $font-thin;
+    margin-bottom: 30px;
+    a {
+        color: $light-grey;
+        font-weight: $font-medium;
+        &:hover,
+        &:focus,
+        &:active { 
+            text-decoration: underline;
+            //font-weight: $font-light;
+            }        
+        }
+    .post-date {
+        font-weight: $font-medium;
+    }
+}
+
+.standard-post-thumbnail {
+    margin-bottom: 30px;
+}
+
+.standard-post-excerpt {
+    font-size: 14pt;
+    font-weight: $font-light;
 }

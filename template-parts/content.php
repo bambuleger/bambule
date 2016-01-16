@@ -6,40 +6,34 @@
     */
 ?>
 
+<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+    <header class="entry-header">
+        <?php the_title('<h1 class="entry-title">', '</h1>') ?>
+        <div class="entry-meta">
+            <?php echo bambule_posted_meta(); ?>
+        <!-- .entry-meta -->
+        </div>
+    </header>
+    <div class="entry-content">
+        <?php if(has_post_thumbnail()):?>
+            <div class="standard-featured">
+                <?php the_post_thumbnail(); ?>
+            <!-- .standard-featured -->        
+            </div>
+        <?php endif; ?>
+        <div class="entry-excerpt">
+            <?php the_excerpt(); ?>
+        <!-- .entry-excerpt -->   
+        </div>        
+        <div class="button-container">
+            <a href="<?php the_permalink(); ?>" class="btn btn-default"><?php _e('Read More') ?></a>
+        <!-- button-container -->    
+        </div>
+    <!-- .entry-content -->
+    </div>
+    <footer class="entry-footer">
+        <?php echo bambule_posted_footer(); ?>
+    </footer>
+</article>
 
-<div class="standard-post-title text-center">
-    <?php echo get_post_format();?>
-        <br>
-        <?php the_title( sprintf('~ <a href="%s">', esc_url( get_permalink() ) ), '</a> ~' ); ?>
-</div>
-<!-- .standard-post-title  -->
-<div class="standard-post-date-category">
-    <small>Posted <?php human_time(get_the_time('U')); ?> / <b><?php the_category(','); ?></b></small>
-</div>
-<!-- .standard-post-title  -->
-<div class="standard-post-thumbnail">
-    <?php the_post_thumbnail( 'full' ); ?>
-</div>
-<!-- .standard-post-thumbnail  -->
-<div class="standard-post-excerpt">
-    <?php
-        global $more;
-        $more = 0;
-        the_content('<div class="readmorebtn"><div class="btn">Read More</div></div>');
-    ?>
-</div>
-<!-- .standard-post-excerpt  -->
-<div class="col-xs-6 text-left standard-post-tags"><i class="fa fa-tags"></i>&nbsp;&nbsp;&nbsp;
-    <?php $tags = get_tags(); ?>
-        <?php foreach ( $tags as $tag ) { ?>
-            <a href="<?php echo get_tag_link( $tag->term_id ); ?> " rel="tag"><?php echo $tag->name; ?></a>&nbsp;&nbsp;&nbsp;
-            <?php } ?>
-</div>
-<!-- .col-xs-6 text-left standard-post-tags -->
-<div class="col-xs-6 text-right standard-post-comments">
-    7 Comments &nbsp;&nbsp;&nbsp;<i class="fa fa-comments"></i>
-</div>
-<!-- .col-xs-6 text-right -->
-<div class="col-xs-12 text-center">
-    <hr class="frontpage">
-</div>
+

@@ -35,3 +35,10 @@ if( @$background == 1 ){
 }
 
 add_theme_support( 'post-thumbnails' );
+
+/* Activate Nav Menu Option */
+function bambule_register_nav_menu(){
+    register_nav_menu('primary', 'Header Navigation Menu');
+}
+
+add_action('after_setup_theme', 'bambule_register_nav_menu');
