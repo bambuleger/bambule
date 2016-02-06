@@ -1,0 +1,19 @@
+/*
+    @package bambuletheme
+*/
+
+@mixin vendored($tag,$value){
+    -webkit-#{$tag}: $value;
+    -moz-#{$tag}: $value;
+    -ms-#{$tag}: $value;
+    -o-#{$tag}: $value;
+    #{$tag}: $value;
+}
+
+@mixin animate ($attr, $time) {
+    @include vendored(transition,$attr $time ease)
+}
+
+@mixin transform ($val) {
+    @include vendored(transform, $val)
+}
