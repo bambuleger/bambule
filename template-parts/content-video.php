@@ -1,13 +1,20 @@
 <?php
     /*
-        Standard Post Template
+        Video Post Format
         
         @package bambuletheme
     */
 ?>
 
-<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+<article id="post-<?php the_ID(); ?>" <?php post_class( 'bambule-format-video' ); ?>>
+   
+    
+   
     <header class="entry-header text-center">
+        <div class="embed-responsive embed-responsive-16by9">
+           <?php echo bambule_get_embedded_media( array('video','iframe') ); ?>
+        </div>
+       
         <?php the_title('<h1 class="entry-title"><a href="'. esc_url( get_permalink() ) .'" rel="bookmark">', '</a></h1>') ?>
         <div class="entry-meta">
             <?php echo bambule_posted_meta(); ?>
@@ -34,5 +41,3 @@
         <?php echo bambule_posted_footer(); ?>
     </footer>
 </article>
-
-

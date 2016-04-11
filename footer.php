@@ -5,7 +5,10 @@
         @package bambuletheme
     */
 ?>
-    <?php wp_footer(); ?>
-        </body>
 
-        </html>
+<footer class="bambule-footer text-center">&copy; RRR</footer>
+
+<?php wp_footer(); ?>
+</body>
+
+</html>

@@ -17,3 +17,8 @@
 @mixin transform ($val) {
     @include vendored(transform, $val)
 }
+
+@keyframes spin{
+    from { @include transform (rotate(0deg)); }
+    to { @include transform (rotate(360deg)); }
+}

@@ -1,6 +1,8 @@
 <?php
     /*        
         @package bambuletheme
+
+        Media Category Page Template
     */
 $url = site_url();
 ?>
@@ -19,6 +21,9 @@ $url = site_url();
             </div><!-- .container -->
 
         <?php endif; ?>
+
+
+
 
             <div class="container bambule-posts-container">
                 <?php

@@ -14,8 +14,8 @@
 @import 'base/placeholders';
 //@import 'partials/template-content';
 
-/* 
-	Generic 
+/*
+	Generic
 	------------------------------------------------
 */
 
@@ -25,8 +25,8 @@ body { font-family: $body-font; background-color: $dark-grey;}
 
 .nopadding { padding: 0; }
 
-a { @include animate(color, 320ms);
-    &:hover, &:focus { text-decoration: none; }
+a { @include animate(color, 320ms); color: #333;
+    &:hover, &:focus { text-decoration: none; color: #333; }
 }
 
 .background-image { background-position: center center; background-size: cover; background-repeat: no-repeat; }
@@ -35,8 +35,8 @@ a { @include animate(color, 320ms);
     .table-cell { display: table-cell; width: 100%; height: 100%; vertical-align: middle; }
 }
 
-/* 
-	Header 
+/*
+	Header
 	------------------------------------------------
 */
 
@@ -44,8 +44,8 @@ a { @include animate(color, 320ms);
 .site-title { color: #fff; margin: 0; font-size: 130px; }
 .site-description { font-size: 14px; color: #fff; margin-top: 1em; }
 
-/* 
-	Header Navigation 
+/*
+	Header Navigation
 	------------------------------------------------
 */
 
@@ -93,16 +93,18 @@ a { @include animate(color, 320ms);
 }
 
 
-/* 
-	Standard Post Format 
+/*
+	Standard Post Format
 	------------------------------------------------
 */
 
-article { margin-bottom: 80px; }
+article { padding-bottom: 40px; padding-top: 40px; margin-left:100px; margin-right: 100px;
+
+}
 
 h1 { font-size: 48px; font-weight: 200; color: $primary-color;
     a { color: $primary-color; }
-    &.entry-title { line-height: 1.5em; margin: 40px 0 0; padding: 0;
+    &.entry-title { line-height: 1.5em; margin: 0; padding: 0;
         &:before, &:after { content: '~'; display: inline-block; position: relative; }
         &:before { margin-right: 10px; }
         &:after { margin-left: 10px; }
@@ -110,13 +112,13 @@ h1 { font-size: 48px; font-weight: 200; color: $primary-color;
 }
 
 .entry-meta { font-size: 13px; font-weight: 300; color: $light-grey; margin-bottom: 20px;
-    a { font-weight: 500; color: $light-grey; 
+    a { font-weight: 500; color: $light-grey;
         &:hover, &:focus { color: $dark-grey; }
     }
 }
 
 .standard-featured-link {display: block; position: relative;
-    &:hover, &:focus { 
+    &:hover, &:focus {
         .standard-featured {
             &:after { background-color: rgba(0,0,0,0); }
         }
@@ -137,22 +139,22 @@ h1 { font-size: 48px; font-weight: 200; color: $primary-color;
 
 .entry-footer { padding: 10px 5px; border-bottom: 4px solid $lighter-grey; color: $light-grey; text-transform: uppercase;
     a { color: $light-grey; display: inline-block; font-size: 12px;}
-    .tags-list { 
+    .tags-list {
         .bambule-icon { margin-right: 10px; }
         a { padding: 0 4px;
          &:hover, &:focus { color: $dark-grey; }
         }
     }
-    .comments-link { 
+    .comments-link {
         .bambule-icon { margin-left: 10px; }
     }
 }
 
-/* 
-	Image Post Format 
+/*
+	Image Post Format
 	------------------------------------------------
 */
-.bambule-format-image { margin-top: 50px;
+.bambule-format-image {
     .entry-header { @extend %text-shadow; height: 600px; position: relative;}
     h1, .entry-meta, .entry-header { color: $white;
         a { color: $white; }
@@ -165,3 +167,235 @@ h1 { font-size: 48px; font-weight: 200; color: $primary-color;
     }
 }
 
+
+/*
+	Audio Post Format
+	------------------------------------------------
+*/
+
+.bambule-format-audio {
+    h1 { font-size: 30px;
+        &.entry-title { display: inline-block; margin-right: 20px;
+            &:before, &:after { display: none; }
+        }
+    }
+    .entry-meta { display: inline-block; margin: 0; }
+    .entry-content {
+        iframe { width: 100%; height: 166px; }
+    }
+}
+
+/*
+	Video Post Format
+	------------------------------------------------
+*/
+
+.bambule-format-video {
+    .entry-title {  }
+    header {
+        h1 {
+            &.entry-title { margin-top: 20px; }
+        }
+    }
+}
+
+/*
+	WooCommerce Shop
+	------------------------------------------------
+*/
+
+.shop-content { color: $dark-grey; margin-top: 10px; margin-left: 20px; font-size: 17px; line-height: 1.5em; font-weight: 300; letter-spacing: 0.03em;
+    .label { color: $dark-grey; font-size: 17px; }
+    .page-title, .page-description, .woocommerce-result-count, .reset_variations{ display: none; }
+    .woocommerce-ordering { margin: 0; }
+    a { color: $dark-grey;
+        &:hover, &:focus { color: $light-grey; }
+    }
+    .button, .product_type_simple, .add_to_cart_button, .ajax_add_to_cart, .single_add_to_cart_button, .button, .alt { @include animate(all, 320ms); text-transform: uppercase; font-size: 14px; font-weight: 300; color: $light-grey; padding: 8px 12px; border-radius: 0; border: 1px solid $light-grey; background-color: transparent;
+        &:hover, &:focus { color: $white; border-color: $dark-grey; background-color: $dark-grey }
+    }
+    #tab-description {
+        h2 { display: none; }
+    }
+}
+
+/*
+	Gallery Post Format
+	------------------------------------------------
+*/
+
+.bambule-format-gallery {
+    .entry-title {  }
+    header {
+        h1 {
+            &.entry-title { margin-top: 20px; }
+        }
+    }
+    .standard-featured { height: 500px;
+        &:after { background-color: transparent;}
+    }
+    .carousel-control { background: none; background-image: none; opacity: 1; filter: alpha(opacitiy=100); font-size: 30px;@extend %text-shadow; width: auto;
+        .preview-container { position: relative; display: block; padding: 20px; background-color: rgba(0,0,0,0); line-height: 0; @include animate( background-color, 320ms );
+            .thumbnail-container { position: absolute; display: block; height: 68px; width: 68px; border-radius: 50%; background-color: #999; top: 1px; @include animate( transform, 320ms ); @include transform( scale(0) ); }
+        }
+        &.right {
+            .preview-container { padding-left: 80px; border-radius: 35.5px 0 0 35.5px;
+                .thumbnail-container { left: 1px; }
+            }
+        }
+        &.left {
+            .preview-container { padding-right: 80px; border-radius: 0 35.5px 35.5px 0;
+                .thumbnail-container { right: 1px; }
+            }
+        }
+        &:hover {
+            .preview-container { background-color: rgba(0,0,0,0.8);
+                .thumbnail-container { @include transform( scale(1) ); }
+            }
+        }
+    }
+}
+
+/*
+	Quote Post Format
+	------------------------------------------------
+*/
+
+.bambule-format-quote {
+	.quote-content { font-size: 42px; font-weight: 100; line-height: 1.3em; letter-spacing: 0.03em;
+		&:before,
+		&:after { content: ''; display: inline-block; position: relative; color: #ccc;}
+		&:before { content: ''; }
+		&:after { content: ''; }
+	}
+	.quote-author { color: #898989; font-size: 12px; letter-spacing: 0.06em; margin-top: 10px; margin-block-end: 30px; }
+}
+
+/*
+	Link Post Format
+	------------------------------------------------
+*/
+
+.bambule-format-link {
+    h1 {
+        &.entry-title {
+            &:before, &:after { display: none; }
+            a { display: block; }
+            .link-icon {
+                display: block; color: #fff;
+                font-size: 30px;
+                width: 50px;
+                height: 50px;
+                border-radius: 50%;
+                background-color: rgba(0,0,0,0.6);
+                margin: 0 auto;
+                line-height: 1em;
+                padding-top: 10px;
+            }
+        }
+    }
+}
+
+/*
+	Aside Post Format
+	------------------------------------------------
+*/
+
+.bambule-format-aside {
+    .aside-container {
+        background-color: rgba(0,0,0,0.075);
+        padding-top: 20px;
+    }
+    .aside-featured {
+        width: 136px;
+        height: 136px;
+        border-radius: 50%;
+        margin: 0 10px -10px 10px;
+    }
+    .entry-excerpt {
+        margin-top: 0;
+        p {
+            font-size:15px;
+        }
+    }
+    .entry-meta {
+        margin-bottom: 5px;
+    }
+    .entry-footer {
+        border-bottom: none;
+        background-color: rgba(0,0,0,0.05);
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+}
+
+/*
+    Footer Section
+    ------------------------------------------------
+*/
+
+.bambule-footer {
+    background-color: #333;
+    padding: 20px 0;
+    margin-top: 20px;
+    display: block;
+    color: #ccc;
+    font-size: 14px;
+}
+
+/*
+    Ajax Loading
+    ------------------------------------------------
+*/
+
+.container-load-previous {
+    padding-top: 30px;
+    margin-bottom: -20px;
+}
+
+.bambule-posts-container {
+
+    padding-top: 0px;
+
+    article {
+        @include animate(all,320ms);
+        @include transform(translateY(50px));
+        opacity: 0;
+
+        &.reveal {
+            @include transform(translateY(0px));
+            opacity: 1;
+        }
+
+    }
+
+}
+
+.btn-bambule-load{
+    display: block;
+    width: 200px;
+    color: #222;
+    font-size: 20px;
+    margin: 0 auto;
+    cursor: pointer;
+    opacity: 0.5;
+    @include animate( opacity, 320ms );
+    &:hover,
+    &:focus,
+    &.loading {
+        opacity: 1;
+    }
+    &.loading {
+        cursor: default;
+    }
+    span {
+        display: block;
+    }
+}
+
+.spin {
+    animation-name: spin;
+    animation-duration: 1000ms;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+}

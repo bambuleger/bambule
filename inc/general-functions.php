@@ -50,22 +50,59 @@ function bambule_posted_footer() {
 }
 
 //bambule_get_attachment
-function bambule_get_attachment() {    
+function bambule_get_attachment( $num = 1 ) {    
     $output = '';
-        if(has_post_thumbnail()):
-            $output = wp_get_attachment_url( get_post_thumbnail_id( get_the_ID() ) );
-        else:
-            $attachments = get_posts( array( 
-                'post_type' => 'attachment',
-                'posts_per_page' => 1,
-                'post_parent' => get_the_ID()
-            ) );
-            if ( $attachments ):
-                foreach( $attachments as $attachment ):
-                    $output = wp_get_attachment_url( $attachment->ID );
-                endforeach;
-            endif;   
-            wp_reset_postdata();
-        endif;    
+	if( has_post_thumbnail() && $num == 1 ): 
+		$output = wp_get_attachment_url( get_post_thumbnail_id( get_the_ID() ) );
+	else:
+		$attachments = get_posts( array( 
+			'post_type' => 'attachment',
+			'posts_per_page' => $num,
+			'post_parent' => get_the_ID()
+		) );
+		if( $attachments && $num == 1 ):
+			foreach ( $attachments as $attachment ):
+				$output = wp_get_attachment_url( $attachment->ID );
+			endforeach;
+        elseif ( $attachments && $num >= 1 ):
+            $output = $attachments;
+		endif;
+		
+		wp_reset_postdata();
+		
+	endif;
+	
+	return $output;
+}
+
+function bambule_get_embedded_media( $type = array() ){
+    $content = do_shortcode( apply_filters( 'the_content', get_the_content() ) );
+    $embed = get_media_embedded_in_content( $content, $type );
+    
+    if ( in_array( 'audio', $type ) ):
+        $output = str_replace( '?visual=true', '?visual=false', $embed[0]);
+    else:
+        $output = $embed[0];
+    endif;
+    
     return $output;
 }
+
+function bambule_grab_url() {
+    if ( ! preg_match( '/<a\s[^>]*?href=[\'"](.+?)[\'"]/i', get_the_content(), $links ) ){
+        return false;
+    }
+    return esc_url_raw($links[1]);
+}
+
+
+
+
+
+
+
+
+
+
+
+
